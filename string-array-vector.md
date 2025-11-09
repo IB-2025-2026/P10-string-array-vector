@@ -215,41 +215,41 @@ Estudie los siguientes apartados del [tutorial de referencia](https://www.learnc
 1. Solucione todos los problemas que le sea posible en la plataforma Exercism. Ello le ayudará a mejorar sus capacidades de programación.
 
 2. Desarrolle un programa que incluya una función cuyo prototipo sea:
-```cpp
-std::vector<double> GenerateVector(int size, double lower, double upper);
-```
-Esta función debe generar y devolver un vector de `size` elementos que se inicializarán con valores generados aleatoriamente en el intervalo `(lower, upper)`. Consulte para ello en [cppreference](https://en.cppreference.com/w/cpp/numeric/random/uniform_real_distribution) cómo utilizar una distribución uniforme con números reales. Una vez tenga desarrollada esa función, podría invocarla del siguiente modo (por ejemplo):
-```cpp
-std::vector<double> my_vector{GenerateVector(30, 5.0, 10.0)};
-for (const auto& value: my_vector) {
-  std::cout << "Component: " << value << std::endl;
-}
-```
-La llamada anterior inicializa el vector `my_vector` con 30 componentes de tipo `double`, cuyos valores se generan aleatoriamente dentro el rango `(5.0, 10.0)`. A continuación, el bucle imprime los valores que se almacenan en ese vector.
+    ```cpp
+    std::vector<double> GenerateVector(int size, double lower, double upper);
+    ```
+    Esta función debe generar y devolver un vector de `size` elementos que se inicializarán con valores generados aleatoriamente en el intervalo `(lower, upper)`. Consulte para ello en [cppreference](https://en.cppreference.com/w/cpp/numeric/random/uniform_real_distribution) cómo utilizar una distribución uniforme con números reales. Una vez tenga desarrollada esa función, podría invocarla del siguiente modo (por ejemplo):
+    ```cpp
+    std::vector<double> my_vector{GenerateVector(30, 5.0, 10.0)};
+    for (const auto& value: my_vector) {
+      std::cout << "Component: " << value << std::endl;
+    }
+    ```
+    La llamada anterior inicializa el vector `my_vector` con 30 componentes de tipo `double`, cuyos valores se generan aleatoriamente dentro el rango `(5.0, 10.0)`. A continuación, el bucle imprime los valores que se almacenan en ese vector.
 
 3. Desarrolle un programa que incluya una función `ReduceSum` que tome como parámetro un vector de números en punto flotante y devuelva como resultado la suma de todos los valores almacenados en el vector.
-
-Utilice la función `GenerateVector()` para generar vectores y probar el funcionamiento de `ReduceSum`.
-```
-Public test cases
-Input           Output
-1.0 1.0 1.0      3.0
-1 2 3 4 5 6     21.0
-0 0 0 0 1 0 1    2.0
-```
+    
+    Utilice la función `GenerateVector()` para generar vectores y probar el funcionamiento de `ReduceSum`.
+    ```
+    Public test cases
+    Input           Output
+    1.0 1.0 1.0      3.0
+    1 2 3 4 5 6     21.0
+    0 0 0 0 1 0 1    2.0
+    ```
 
 4. Desarrolle un programa que incluya una función que tome como parámetro un vector y calcule los valores máximo, mínimo y promedio de todos los valores almacenados en el vector.
-
-Puesto que una función solo puede devolver un único valor, tendrá que investigar algún mecanismo para posibilitar que la función devuelva esos tres valores (máximo, mínimo y promedio). Una posible solución sería desarrollar tres funciones diferentes, una para cada uno de los cálculos, pero eso sería ineficiente porque ello requeriría recorrer el vector tres veces, cuando el problema se puede resolver recorriendo el vector una sola vez.
-
-Investigue cómo resolver el problema utilizando el paso de parámetros por referencia para posibilitar que la función *exporte* los tres valores que calcula. Utilice la función `GenerateVector()` para generar vectores y probar el funcionamiento de su función.
+    
+    Puesto que una función solo puede devolver un único valor, tendrá que investigar algún mecanismo para posibilitar que la función devuelva esos tres valores (máximo, mínimo y promedio). Una posible solución sería desarrollar tres funciones diferentes, una para cada uno de los cálculos, pero eso sería ineficiente porque ello requeriría recorrer el vector tres veces, cuando el problema se puede resolver recorriendo el vector una sola vez.
+    
+    Investigue cómo resolver el problema utilizando el paso de parámetros por referencia para posibilitar que la función *exporte* los tres valores que calcula. Utilice la función `GenerateVector()` para generar vectores y probar el funcionamiento de su función.
 
 5. Una forma sencilla de generar un número entero aleatorio en cualquier rango es recurriendo a la función [`std::rand`](https://en.cppreference.com/w/cpp/numeric/random/rand) de la librería `cstdlib`, que devuelve un número entero pseudo-aleatorio en el rango [0, `RAND_MAX`]. `RAND_MAX` es una constante cuyo valor depende de la versión del compilador que se use, pero se garantiza que es al menos mayor o igual que 32767.
-
-Para ajustar el valor devuelto por `std::rand` al intervalo deseado, se puede utilizar la operación *módulo* (`%`). Por ejemplo, para obtener un valor aleatorio en el intervalo `[a, b)` (`a` incluido, `b` excluido), se podría realizar la operación
-```
-a + std::rand() % (b - a) 
-```
-Desarrolle un programa que incluya una función (que no devuelva nada) que tome como parámetro un vector y lo desordene. Para ello, recorra el vector e intercambie cada uno de sus elementos con una posición aleatoria dentro del mismo.
-
-Si observa que su programa siempre muestra la misma permutación del vector, estudie la función [`std::srand`](https://en.cppreference.com/w/cpp/numeric/random/srand) que permite modificar la *semilla* del generador de números aleatorios de C++.
+    
+    Para ajustar el valor devuelto por `std::rand` al intervalo deseado, se puede utilizar la operación *módulo* (`%`). Por ejemplo, para obtener un valor aleatorio en el intervalo `[a, b)` (`a` incluido, `b` excluido), se podría realizar la operación
+    ```
+    a + std::rand() % (b - a) 
+    ```
+    Desarrolle un programa que incluya una función (que no devuelva nada) que tome como parámetro un vector y lo desordene. Para ello, recorra el vector e intercambie cada uno de sus elementos con una posición aleatoria dentro del mismo.
+    
+    Si observa que su programa siempre muestra la misma permutación del vector, estudie la función [`std::srand`](https://en.cppreference.com/w/cpp/numeric/random/srand) que permite modificar la *semilla* del generador de números aleatorios de C++.
